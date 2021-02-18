@@ -17,5 +17,5 @@ public interface IPessoaService {
 
     ResponseModel deletar(Integer codigo);
 
-
+    Pessoa buscarUsuarioESenha(String usuario, String senha);
 }

@@ -17,4 +17,6 @@ public interface PessoaRepository extends Repository<Pessoa, Integer> {
 	List<Pessoa> findAll();
 	
 	Pessoa findOne(Integer id);
+
+	Pessoa findPessoaByUsuarioAndSenha(String usuario, String senha);
 }

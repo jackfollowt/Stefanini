@@ -70,4 +70,9 @@ public class PessoaService implements IPessoaService {
             return new ResponseModel(0, e.getMessage());
         }
     }
+
+    @Override
+    public Pessoa buscarUsuarioESenha(String usuario, String senha) {
+        return pessoaRepository.findPessoaByUsuarioAndSenha(usuario, senha);
+    }
 }
