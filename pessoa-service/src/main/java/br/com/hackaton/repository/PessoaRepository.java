@@ -5,15 +5,18 @@ import java.util.List;
 
 import org.springframework.data.repository.Repository;
 
-import br.com.hackaton.model.PessoaModel;
+import br.com.hackaton.entity.Pessoa;
 
-public interface PessoaRepository extends Repository<PessoaModel, Integer> {
 
-	void save(PessoaModel pessoa);
+public interface PessoaRepository extends Repository<Pessoa, Integer> {
+
+	void save(Pessoa pessoa);
 	
-	void delete(PessoaModel pessoa);
+	void delete(Pessoa pessoa);
 	
-	List<PessoaModel> findAll();
+	List<Pessoa> findAll();
 	
-	PessoaModel findOne(Integer id);
+	Pessoa findOne(Integer id);
+
+	Pessoa findPessoaByUsuarioAndSenha(String usuario, String senha);
 }

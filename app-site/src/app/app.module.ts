@@ -1,45 +1,35 @@
+﻿import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { HttpModule } from '@angular/http';
-import { FormsModule } from '@angular/forms';
-
 import { ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
-import { AppRoutingModule } from './app-routing.module';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import { appRoutingModule } from './app.routing';
+import { JwtInterceptor, ErrorInterceptor } from './_helpers';
 import { AppComponent } from './app.component';
-import { MenuComponent } from './menu/menu.component';
-import { HomeComponent } from './home/home.component';
-import { ConsultaComponent } from './pessoa/consulta/consulta.component';
-import { CadastroComponent} from './pessoa/cadastro/cadastro.component';
-
-import {routing} from './../app.routes';
-
-
-import {ConfigService} from './services/config.service';
-import {PessoaService} from './services/pessoa.service';
-
+import { HomeComponent } from './home';
+import { LoginComponent } from './login';
+import { RegisterComponent } from './register';
+import { AlertComponent } from './_components';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    MenuComponent,
-    HomeComponent,
-    ConsultaComponent,
-    CadastroComponent
-  ],
-  imports: [
-    BrowserModule,
-    HttpModule,
-    FormsModule,
-    AppRoutingModule,
-    ReactiveFormsModule,
-    HttpClientModule, BrowserAnimationsModule,
-    routing
-  ],
-  providers: [ConfigService,PessoaService],
-  bootstrap: [AppComponent]
+    imports: [
+        BrowserModule,
+        ReactiveFormsModule,
+        HttpClientModule,
+        appRoutingModule
+    ],
+    declarations: [
+        AppComponent,
+        HomeComponent,
+        LoginComponent,
+        RegisterComponent,
+        AlertComponent
+    ],
+    providers: [
+        { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+        { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+
+    ],
+    bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule { };
