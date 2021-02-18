@@ -11,7 +11,7 @@ import br.com.hackaton.entity.Pessoa;
 import br.com.hackaton.model.ResponseModel;
 import br.com.hackaton.repository.PessoaRepository;
 
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/service")
 public class PessoaController {
@@ -28,7 +28,7 @@ public class PessoaController {
     @PostMapping(value = "/pessoa", consumes = MediaType.APPLICATION_JSON_UTF8_VALUE, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public @ResponseBody ResponseModel salvar(@RequestBody Pessoa pessoa) {
 
-
+        System.out.println("Passei aki!!!!");
         return this.pessoaService.salvar(pessoa);
     }
 
