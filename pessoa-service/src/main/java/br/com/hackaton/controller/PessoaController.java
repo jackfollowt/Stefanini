@@ -79,6 +79,13 @@ public class PessoaController {
 
     }
 
+    /**
+     * BUSCAR UM USUARUIO PELO LOGIN
+     *
+     * @param usuario
+     * @param senha
+     * @return
+     */
     @GetMapping(value = "/pessoa/{usuario}/{senha}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public @ResponseBody Pessoa buscar(@PathVariable("usuario") String usuario, @PathVariable("senha") String senha) {
 
