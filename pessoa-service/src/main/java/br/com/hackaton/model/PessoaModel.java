@@ -40,12 +40,12 @@ public class PessoaModel {
 	@Column(name = "login_senha")
 	private String senha;
 
-	/*@Column(name = "ident_sexo")
-	private String sexo;*/
+	@Column(name = "ident_sexo")
+	private String sexo;
 
-	/*public String getSexo() {
+	public String getSexo() {
 		return sexo;
-	}*/
+	}
 
 	public String getEndereco() {
 		return endereco;
@@ -55,11 +55,9 @@ public class PessoaModel {
 		this.endereco = endereco;
 	}
 
-/*
 	public void setSexo(String sexo) {
 		this.sexo = sexo;
 	}
-*/
 
 	public String getTelefone() {
 		return telefone;
