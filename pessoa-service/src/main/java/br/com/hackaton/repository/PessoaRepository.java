@@ -7,6 +7,7 @@ import org.springframework.data.repository.Repository;
 
 import br.com.hackaton.entity.Pessoa;
 
+
 public interface PessoaRepository extends Repository<Pessoa, Integer> {
 
 	void save(Pessoa pessoa);

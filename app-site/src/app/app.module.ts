@@ -3,7 +3,10 @@ import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
 
+import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
 import { MenuComponent } from './menu/menu.component';
@@ -30,6 +33,8 @@ import {PessoaService} from './services/pessoa.service';
     BrowserModule,
     HttpModule,
     FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule, BrowserAnimationsModule,
     routing
   ],
   providers: [ConfigService,PessoaService],
