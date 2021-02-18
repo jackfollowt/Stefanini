@@ -1,4 +1,4 @@
-package br.com.hackaton.model;
+package br.com.hackaton.entity;
 
 import org.hibernate.validator.constraints.Email;
 
@@ -11,7 +11,7 @@ import javax.persistence.Table;
 
 @Table(name="tb_pessoa")
 @Entity
-public class PessoaModel {
+public class Pessoa {
 	
 	@Id
 	@GeneratedValue(strategy= GenerationType.AUTO)
