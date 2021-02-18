@@ -1,2 +1,7 @@
-
-{{mensagem}}
+﻿<h1>Olá {{currentPessoa.nome}}!</h1>
+<ul>
+    <li *ngFor="let pessoa of pessoas">
+        {{pessoa.usuario}} ({{pessoa.nome}})
+        - <a (click)="deletePessoa(pessoa.id)" class="text-danger">Delete</a>
+    </li>
+</ul>
