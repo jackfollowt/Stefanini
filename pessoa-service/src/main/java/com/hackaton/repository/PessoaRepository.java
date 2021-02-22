@@ -1,23 +1,23 @@
-package br.com.hackaton.repository;
+package com.hackaton.repository;
 
-import java.util.List;
-
-
+import com.hackaton.entity.Pessoa;
 import org.springframework.data.jpa.repository.JpaRepository;
-
-import br.com.hackaton.entity.Pessoa;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 @Repository
+@Transactional
 public interface PessoaRepository extends JpaRepository<Pessoa, Integer> {
 
-	/*void save(Pessoa pessoa);*/
-	
+	//Object save(Pessoa pessoa);
+/*
 	void delete(Pessoa pessoa);
-	
+
 	List<Pessoa> findAll();
-	
+
 	Pessoa findOne(Integer id);
 
 	Pessoa findPessoaByUsuarioAndSenha(String usuario, String senha);
+
+	Pessoa findPessoaByEmail(String email);*/
 }
