@@ -5,6 +5,7 @@ import com.hackaton.entity.Pessoa;
 import com.hackaton.model.ResponseModel;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface IPessoaService {
 
@@ -14,7 +15,7 @@ public interface IPessoaService {
 
     List<Pessoa> consultar();
 
-    Pessoa buscar(Integer codigo);
+    Optional<Pessoa> buscar(Integer codigo);
 
     ResponseModel deletar(Integer codigo);
 

@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 
 @Service
@@ -19,53 +20,30 @@ public class PessoaService implements IPessoaService {
 
     @Override
     public ResponseModel salvar(Pessoa pessoa) {
-       /* boolean emailExiste =  emailCadastradoExiste(pessoa);*/
+        boolean emailExiste =  emailCadastradoExiste(pessoa);
 
             try {
+                if (!emailExiste) {
                     this.pessoaRepository.save(pessoa);
                     return new ResponseModel(1, "Registro salvo com sucesso!");
+                }
+                return new ResponseModel(2, "Email já Cadastrado");
             } catch (Exception e) {
 
                 return new ResponseModel(0, e.getMessage());
             }
     }
 
-    @Override
-    public ResponseModel atualizar(Pessoa pessoa) {
-        return null;
-    }
-
-    @Override
-    public List<Pessoa> consultar() {
-        return null;
-    }
-
-    @Override
-    public Pessoa buscar(Integer codigo) {
-        return null;
-    }
-
-    @Override
-    public ResponseModel deletar(Integer codigo) {
-        return null;
-    }
-
-    @Override
-    public Pessoa buscarUsuarioESenha(String usuario, String senha) {
-        return null;
-    }
-}
-
-/*   private boolean emailCadastradoExiste(Pessoa pessoa) {
+    private boolean emailCadastradoExiste(Pessoa pessoa) {
         Pessoa pessoaExiste = pessoaRepository.findPessoaByEmail(pessoa.getEmail());
         if (pessoaExiste !=null){
             return true;
          }else {
             return false;
         }
-    }*/
+    }
 
-/*
+
     @Override
     public ResponseModel atualizar(Pessoa pessoa) {
         try {
@@ -86,13 +64,19 @@ public class PessoaService implements IPessoaService {
     }
 
     @Override
-    public Pessoa buscar(Integer codigo) {
-        return this.pessoaRepository.findOne(codigo);
+    public Optional<Pessoa> buscar(Integer codigo) {
+        return pessoaRepository.findById(codigo);
     }
 
     @Override
     public ResponseModel deletar(Integer codigo) {
-        Pessoa pessoa = pessoaRepository.findOne(codigo);
+        return null;
+    }
+
+/*
+    @Override
+    public ResponseModel deletar(Integer codigo) {
+        Optional<Pessoa> pessoa = pessoaRepository.findById(codigo);
 
         try {
 
@@ -104,9 +88,11 @@ public class PessoaService implements IPessoaService {
             return new ResponseModel(0, e.getMessage());
         }
     }
+*/
 
     @Override
     public Pessoa buscarUsuarioESenha(String usuario, String senha) {
         return pessoaRepository.findPessoaByUsuarioAndSenha(usuario, senha);
     }
-}*/
+
+}

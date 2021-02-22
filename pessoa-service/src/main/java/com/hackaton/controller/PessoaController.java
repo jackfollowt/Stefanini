@@ -4,10 +4,10 @@ import com.hackaton.entity.Pessoa;
 import com.hackaton.iservice.IPessoaService;
 import com.hackaton.model.ResponseModel;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 
 @CrossOrigin(origins = "*")
@@ -61,7 +61,8 @@ public class PessoaController {
      * @return
      */
     @GetMapping(value = "/pessoa/{codigo}")
-    public @ResponseBody Pessoa buscar(@PathVariable("codigo") Integer codigo) {
+    public @ResponseBody
+    Optional<Pessoa> buscar(@PathVariable("codigo") Integer codigo) {
 
         return this.pessoaService.buscar(codigo);
     }
