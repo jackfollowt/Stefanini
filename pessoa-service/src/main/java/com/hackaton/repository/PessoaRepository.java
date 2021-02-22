@@ -9,15 +9,4 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public interface PessoaRepository extends JpaRepository<Pessoa, Integer> {
 
-	//Object save(Pessoa pessoa);
-/*
-	void delete(Pessoa pessoa);
-
-	List<Pessoa> findAll();
-
-	Pessoa findOne(Integer id);
-
-	Pessoa findPessoaByUsuarioAndSenha(String usuario, String senha);
-
-	Pessoa findPessoaByEmail(String email);*/
 }

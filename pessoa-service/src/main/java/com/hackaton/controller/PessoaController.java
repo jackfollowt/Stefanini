@@ -25,8 +25,7 @@ public class PessoaController {
      * @return
      */
     @PostMapping(value = "/pessoa")
-    public @ResponseBody
-    ResponseModel salvar(@RequestBody Pessoa pessoa) {
+    public @ResponseBody ResponseModel salvar(@RequestBody Pessoa pessoa) {
 
         return this.pessoaService.salvar(pessoa);
     }
