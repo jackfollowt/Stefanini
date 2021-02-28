@@ -31,6 +31,8 @@ export class RegisterComponent implements OnInit {
             telefone: ['', [Validators.required, Validators.maxLength(9)]],
             idade: ['', Validators.required],
             email: ['', Validators.required],
+            sexo: ['', Validators.required],
+            atuacao: ['', Validators.required],
             senha: ['', [Validators.required, Validators.minLength(6)]]
         });
     }
