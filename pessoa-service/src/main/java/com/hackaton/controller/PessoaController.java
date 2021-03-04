@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 
-
 @CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/service")
@@ -17,6 +16,7 @@ public class PessoaController {
 
     @Autowired
     private IPessoaService pessoaService;
+
 
     /**
      * SALVAR UM NOVO REGISTRO
@@ -48,8 +48,7 @@ public class PessoaController {
      * @return
      */
     @GetMapping(value = "/pessoa")
-    public @ResponseBody
-    List<Pessoa> consultar() {
+    public @ResponseBody List<Pessoa> consultar() {
 
         return pessoaService.consultar();
     }
@@ -61,8 +60,7 @@ public class PessoaController {
      * @return
      */
     @GetMapping(value = "/pessoa/{codigo}")
-    public @ResponseBody
-    Optional<Pessoa> buscar(@PathVariable("codigo") Integer codigo) {
+    public @ResponseBody Optional<Pessoa> buscar(@PathVariable("codigo") Integer codigo) {
 
         return this.pessoaService.buscar(codigo);
     }
@@ -76,7 +74,6 @@ public class PessoaController {
     public @ResponseBody ResponseModel excluir(@PathVariable("codigo") Integer codigo) {
 
         return pessoaService.deletar(codigo);
-
     }
 
     /**
