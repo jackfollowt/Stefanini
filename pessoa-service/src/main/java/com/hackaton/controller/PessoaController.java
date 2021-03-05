@@ -3,6 +3,7 @@ package com.hackaton.controller;
 import com.hackaton.entity.Pessoa;
 import com.hackaton.iservice.IPessoaService;
 import com.hackaton.model.ResponseModel;
+import com.hackaton.ws.request.SusApiRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,6 +17,9 @@ public class PessoaController {
 
     @Autowired
     private IPessoaService pessoaService;
+
+    @Autowired
+    private SusApiRequest susApiRequest;
 
 
     /**
@@ -51,6 +55,11 @@ public class PessoaController {
     public @ResponseBody List<Pessoa> consultar() {
 
         return pessoaService.consultar();
+    }
+
+    @GetMapping(value = "/api")
+    public @ResponseBody String getApi() throws Exception {
+        return susApiRequest.run();
     }
 
     /**
