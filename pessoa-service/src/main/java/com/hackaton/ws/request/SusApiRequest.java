@@ -24,7 +24,7 @@ public class SusApiRequest implements Serializable {
     }
 
     @Bean
-    public String run() throws Exception {
+    public String run() {
 
         RestTemplate restTemplate = new RestTemplate();
         String url = "https://elasticsearch-saps.saude.gov.br/desc-notificacoes-esusve-*/_search?pretty";
