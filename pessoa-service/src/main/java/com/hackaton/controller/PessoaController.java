@@ -3,12 +3,12 @@ package com.hackaton.controller;
 import com.hackaton.entity.Pessoa;
 import com.hackaton.iservice.IPessoaService;
 import com.hackaton.model.ResponseModel;
+import com.hackaton.ws.request.SusApiRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
-
 
 @CrossOrigin(origins = "*")
 @RestController
@@ -17,6 +17,10 @@ public class PessoaController {
 
     @Autowired
     private IPessoaService pessoaService;
+
+    @Autowired
+    private SusApiRequest susApiRequest;
+
 
     /**
      * SALVAR UM NOVO REGISTRO
@@ -48,10 +52,14 @@ public class PessoaController {
      * @return
      */
     @GetMapping(value = "/pessoa")
-    public @ResponseBody
-    List<Pessoa> consultar() {
+    public @ResponseBody List<Pessoa> consultar() {
 
         return pessoaService.consultar();
+    }
+
+    @GetMapping(value = "/api")
+    public @ResponseBody String getApi() throws Exception {
+        return susApiRequest.run();
     }
 
     /**
@@ -61,8 +69,7 @@ public class PessoaController {
      * @return
      */
     @GetMapping(value = "/pessoa/{codigo}")
-    public @ResponseBody
-    Optional<Pessoa> buscar(@PathVariable("codigo") Integer codigo) {
+    public @ResponseBody Optional<Pessoa> buscar(@PathVariable("codigo") Integer codigo) {
 
         return this.pessoaService.buscar(codigo);
     }
@@ -76,7 +83,6 @@ public class PessoaController {
     public @ResponseBody ResponseModel excluir(@PathVariable("codigo") Integer codigo) {
 
         return pessoaService.deletar(codigo);
-
     }
 
     /**
