@@ -92,10 +92,10 @@ public class PessoaController {
      * @param senha
      * @return
      */
-    @GetMapping(value = "/pessoa/{usuario}/{senha}")
-    public @ResponseBody Pessoa buscar(@PathVariable("usuario") String usuario, @PathVariable("senha") String senha) {
+    @PostMapping(value = "/pessoa/login")
+    public @ResponseBody Pessoa buscar(@RequestBody Pessoa pessoa) {
 
-        return pessoaService.buscarUsuarioESenha(usuario, senha);
+        return pessoaService.buscarUsuarioESenha(pessoa.getUsuario(), pessoa.getSenha());
     }
 
 }

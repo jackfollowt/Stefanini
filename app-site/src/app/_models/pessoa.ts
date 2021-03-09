@@ -6,5 +6,7 @@
     telefone: number;
     email: string;
     idade: number;
+    sexo: any;
+    atuacao: boolean;
     token: string;
 }
