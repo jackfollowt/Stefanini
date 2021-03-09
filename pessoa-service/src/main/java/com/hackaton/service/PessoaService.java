@@ -70,25 +70,24 @@ public class PessoaService implements IPessoaService {
 
     @Override
     public ResponseModel deletar(Integer codigo) {
-        return null;
-    }
 
-/*
-    @Override
-    public ResponseModel deletar(Integer codigo) {
-        Optional<Pessoa> pessoa = pessoaRepository.findById(codigo);
+        boolean pessoaExiste = pessoaRepository.existsById(codigo);
 
         try {
+            if (pessoaExiste) {
+                Pessoa pessoa = pessoaRepository.findPessoaByCodigo(codigo);
 
-            pessoaRepository.delete(pessoa);
+                pessoaRepository.delete(pessoa);
 
-            return new ResponseModel(1, "Registro excluido com sucesso!");
+                return new ResponseModel(1, "Registro excluido com sucesso!");
+            }
+            return new ResponseModel(3, "Registro Não Existe!");
+
 
         }catch(Exception e) {
             return new ResponseModel(0, e.getMessage());
         }
     }
-*/
 
     @Override
     public Pessoa buscarUsuarioESenha(String usuario, String senha) {
