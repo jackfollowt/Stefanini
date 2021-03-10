@@ -1,0 +1,30 @@
+﻿<div class="col-md-12 user-container">
+    <h2 style="margin: auto"> Lista de Ususarios</h2>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th class="hidden">Id</th>
+            <th>Nome</th>
+            <th>Telefone</th>
+            <th>Email</th>
+            <th>Idade</th>
+            <th>Sexo</th>
+            <th>Atuou com TI</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let pessoa of pessoas">
+            <td class="hidden">{{pessoa.codigo}}</td>
+            <td>{{pessoa.nome}}</td>
+            <td>{{pessoa.telefone}}</td>
+            <td>{{pessoa.email}}</td>
+            <td>{{pessoa.idade}}</td>
+            <td>{{pessoa.sexo}}</td>
+            <td>{{pessoa.atuacao}}</td>
+            <td></td>
+            <td><button class="btn btn-success" (click)="deletePessoa(pessoa.codigo)"> Delete</button>
+                <button class="btn btn-success" (click)="editUser(pessoa)" style="margin-left: 20px;"> Edit</button></td>
+        </tr>
+        </tbody>
+    </table>
+</div>

@@ -1,5 +1,5 @@
 ﻿export class  Pessoa {
-    id: number;
+    codigo: number;
     usuario: string;
     senha: string;
     nome: string;

@@ -19,9 +19,12 @@ public class Pessoa implements Serializable {
 	
 	@Column(name="ds_nome")
 	private String nome;
+
+	@Column(name="ds_idade")
+	private String idade;
 			
-	@Column(name="fl_ativo", columnDefinition="BIT")
-	private boolean ativo;
+	@Column(name="fl_atuaTI")
+	private String atuacao;
 
 	@Column(name = "num_telefone")
 	private String telefone;

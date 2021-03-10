@@ -1,7 +1,7 @@
 ﻿import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { AuthenticationService } from './_services';
+import {AuthenticationService, PessoaService} from './_services';
 import { Pessoa } from './_models';
 
 import './_content/app.less';
@@ -12,7 +12,8 @@ export class AppComponent {
 
     constructor(
         private router: Router,
-        private authenticationService: AuthenticationService
+        private authenticationService: AuthenticationService,
+        private pessoaService: PessoaService
     ) {
         this.authenticationService.currentPessoa.subscribe(x => this.currentPessoa = x);
     }
@@ -20,5 +21,9 @@ export class AppComponent {
     logout() {
         this.authenticationService.logout();
         this.router.navigate(['/login']);
+    }
+    editarUsuario() {
+        this.pessoaService.getAll();
+        this.router.navigate(['/editor']);
     }
 }

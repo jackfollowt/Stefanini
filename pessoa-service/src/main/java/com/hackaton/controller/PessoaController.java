@@ -79,7 +79,7 @@ public class PessoaController {
      * @param codigo
      * @return
      */
-    @DeleteMapping(value = "/pessoa/{codigo}")
+    @DeleteMapping(value = "/pessoa/deletar")
     public @ResponseBody ResponseModel excluir(@PathVariable("codigo") Integer codigo) {
 
         return pessoaService.deletar(codigo);
@@ -88,8 +88,6 @@ public class PessoaController {
     /**
      * BUSCAR UM USUARUIO PELO LOGIN
      *
-     * @param usuario
-     * @param senha
      * @return
      */
     @PostMapping(value = "/pessoa/login")

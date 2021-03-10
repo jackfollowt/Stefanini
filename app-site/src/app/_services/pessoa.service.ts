@@ -2,6 +2,9 @@
 import { HttpClient } from '@angular/common/http';
 
 import { Pessoa } from '@/_models';
+import {map} from 'rxjs/operators';
+import {Observable} from 'rxjs';
+import {Hits} from '@/_models/hits';
 
 @Injectable({ providedIn: 'root' })
 export class PessoaService {
@@ -15,7 +18,13 @@ export class PessoaService {
         return this.http.post(`${config.apiUrl}/pessoa`, pessoa);
     }
 
-    delete(id: number) {
-        return this.http.delete(`${config.apiUrl}/pessoas/${id}`);
+    delete(codigo: number) {
+        console.log('CODIGO PARA DELETAR',codigo);
+        return this.http.delete(`${config.apiUrl}/pessoa/deletar/${codigo}`);
+    }
+
+    susAPI(): Observable<Hits[]> {
+        return this.http.get<Hits>(`${config.apiUrl}/api`)
+            .pipe(map((data: any) => data.hits.hits));
     }
 }
