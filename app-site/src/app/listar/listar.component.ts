@@ -6,8 +6,8 @@ import { Pessoa } from '@/_models';
 import { PessoaService, AuthenticationService } from '@/_services';
 import {Hits} from '@/_models/hits';
 
-@Component({ templateUrl: 'editor.component.html' })
-export class EditorComponent implements OnInit {
+@Component({ templateUrl: 'listar.component.html' })
+export class ListarComponent implements OnInit {
     currentPessoa: Pessoa;
     pessoas = [];
     constructor(

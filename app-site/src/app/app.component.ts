@@ -24,6 +24,6 @@ export class AppComponent {
     }
     editarUsuario() {
         this.pessoaService.getAll();
-        this.router.navigate(['/editor']);
+        this.router.navigate(['/listar']);
     }
 }
