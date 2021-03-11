@@ -42,11 +42,6 @@ public class Pessoa implements Serializable {
 	@Column(name = "num_telefone")
 	private String telefone;
 
-	@NotBlank(message = "{endereco.not.blank}")
-	@NotNull(message = "{endereco.not.null}")
-	@Column(name = "num_endereco")
-	private String endereco;
-
 	@NotBlank(message = "{email.not.blank}")
 	@NotNull(message = "{email.not.null}")
 	@Email(message = "{email.not.valid}")

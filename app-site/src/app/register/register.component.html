@@ -21,13 +21,13 @@
             </div>
 
             <div class="form-group">
-                <label for="dtInicio">Periodo de inicio *</label>
+                <label for="dtInicio" >Periodo de inicio *</label>
                 <input type="Date" formControlName="dtInicio" class="form-control"
                        [ngClass]="{ 'is-invalid': submitted && f.dtInicio.errors }"/>
                 <div *ngIf="submitted && f.dtInicio.errors" class="invalid-feedback">
                     <div *ngIf="f.dtInicio.errors.required">O campo idade é obrigatório</div>
                 </div>
-                <label for="dtInicio">Periodo de Finalização *</label>
+                <label for="dtInicio" style="margin-top: 20px;">Periodo de Finalização *</label>
                 <input type="Date" formControlName="dtFim" class="form-control"
                        [ngClass]="{ 'is-invalid': submitted && f.dtFim.errors }"/>
                 <div *ngIf="submitted && f.dtFim.errors" class="invalid-feedback">

@@ -34,7 +34,7 @@ export class RegisterComponent implements OnInit {
             usuario: ['', Validators.required],
             dtInicio: ['', Validators.required],
             dtFim: ['', Validators.required],
-            telefone: ['', [Validators.required, Validators.maxLength(9)]],
+            telefone: ['', [Validators.required]],
             idade: ['', Validators.required],
             email: ['', Validators.required],
             sexo: ['', Validators.required],

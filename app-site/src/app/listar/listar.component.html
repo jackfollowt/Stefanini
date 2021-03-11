@@ -1,4 +1,4 @@
-﻿<div class="col-md-12 user-container">
+﻿<div class="col-sm-12 user-container">
     <h2 style="margin: auto"> Lista de Usuarios</h2>
     <table class="table table-striped">
         <thead>
@@ -8,7 +8,6 @@
             <th>Email</th>
             <th>Idade</th>
             <th>Sexo</th>
-            <th>Atuou com TI</th>
             <th>Periodo Inicio</th>
             <th>Periodo Fim</th>
         </tr>
@@ -20,12 +19,11 @@
             <td>{{pessoa.email}}</td>
             <td>{{pessoa.idade}}</td>
             <td>{{pessoa.sexo}}</td>
-            <td>{{pessoa.atuacao}}</td>
             <td>{{pessoa.dtInicio}}</td>
             <td>{{pessoa.dtFim}}</td>
             <td></td>
             <td>
-                <button class="btn btn-success" (click)="deletePessoa(pessoa.codigo)"> Delete</button>
+                <button class="btn btn-danger" (click)="deletePessoa(pessoa.codigo)"> Delete</button>
                 <button class="btn btn-success" [routerLink]="['/editar', pessoa.codigo]" style="margin-left: 20px;">Editar
                 </button>
             </td>
