@@ -36,6 +36,8 @@ export class EditarComponent implements OnInit {
             usuario: [document.getElementById('usuario')],
             telefone: [document.getElementById('telefone')],
             idade: [document.getElementById('idade')],
+            dtInicio: [document.getElementById('dtInicio')],
+            dtFim: [document.getElementById('dtInicio')],
             email: [document.getElementById('email')],
             sexo: [document.getElementById('sexo')],
             atuacao: [document.getElementById('atuacao')],
@@ -62,7 +64,7 @@ export class EditarComponent implements OnInit {
             .pipe(first())
             .subscribe(
                 data => {
-                    this.alertService.success('Atualizado com Sucesso', true);
+                    alert('Atualizado com Sucesso')
                     this.router.navigate(['/listar']);
                 },
                 error => {

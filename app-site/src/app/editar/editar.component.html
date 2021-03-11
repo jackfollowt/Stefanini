@@ -16,6 +16,20 @@
                    id="telefone" [value]="pessoa.telefone" [ngModel]="pessoa.telefone"/>
         </div>
         <div class="form-group">
+            <label for="idade"> Idade </label>
+            <input type="text" formControlName="idade" placeholder="idade" name="idade" class="form-control"
+                   id="idade" [value]="pessoa.idade" [ngModel]="pessoa.idade"/>
+        </div>
+        <div class="form-group">
+            <label for="dtInicio" >Periodo de inicio *</label>
+            <input type="Date" formControlName="dtInicio" placeholder="dtInicio" name="dtInicio" class="form-control"
+                   id="dtInicio" [value]="pessoa.dtInicio" [ngModel]="pessoa.dtInicio"/>
+
+            <label for="dtFim" style="margin-top: 20px;">Periodo de Finalização *</label>
+            <input type="Date" formControlName="dtFim" placeholder="dtFim" name="dtFim" class="form-control"
+                   id="dtFim" [value]="pessoa.dtFim" [ngModel]="pessoa.dtFim"/>
+        </div>
+        <div class="form-group">
             <label for="sexo">Sexo</label>
             <select id="sexo" formControlName="sexo" class="form-control"
                     [value]="pessoa.sexo" [ngModel]="pessoa.sexo">
@@ -25,7 +39,7 @@
             </select>
         </div>
         <div class="form-group">
-            <label for="email">email</label>
+            <label for="email">E-mail</label>
             <input type="text" formControlName="email" class="form-control" [value]="pessoa.email" [ngModel]="pessoa.email"/>
         </div>
         <div class="form-group">

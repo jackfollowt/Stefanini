@@ -21,23 +21,20 @@ public class PessoaService implements IPessoaService {
 
     @Override
     public ResponseEntity<Pessoa> salvar(Pessoa pessoa) {
-        Pessoa usuarioExiste =  pessoaRepository.findPessoaByUsuario(pessoa.getUsuario());
-                if (usuarioExiste == null) {
-                    this.pessoaRepository.save(pessoa);
-                    return new ResponseEntity<>(pessoa, HttpStatus.OK);
-                }
-                return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-    }
-
-
-    @Override
-    public ResponseEntity atualizar(Pessoa pessoa) {
-        Pessoa usuarioExiste =  pessoaRepository.findPessoaByUsuario(pessoa.getUsuario());
+        Pessoa usuarioExiste = pessoaRepository.findPessoaByUsuario(pessoa.getUsuario());
         if (usuarioExiste == null) {
             this.pessoaRepository.save(pessoa);
             return new ResponseEntity<>(pessoa, HttpStatus.OK);
         }
         return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+    }
+
+
+    @Override
+    public ResponseEntity atualizar(Pessoa pessoa) {
+        
+            this.pessoaRepository.save(pessoa);
+            return new ResponseEntity<>(pessoa, HttpStatus.OK);
     }
 
     @Override
@@ -54,22 +51,22 @@ public class PessoaService implements IPessoaService {
     public ResponseEntity deletar(Integer codigo) {
 
         boolean pessoaExiste = pessoaRepository.existsById(codigo);
-            if (pessoaExiste) {
-                Pessoa pessoa = pessoaRepository.findPessoaByCodigo(codigo);
+        if (pessoaExiste) {
+            Pessoa pessoa = pessoaRepository.findPessoaByCodigo(codigo);
 
-                pessoaRepository.delete(pessoa);
+            pessoaRepository.delete(pessoa);
 
-                return new ResponseEntity(HttpStatus.OK);
-            }
-            return new ResponseEntity(HttpStatus.BAD_REQUEST);
+            return new ResponseEntity(HttpStatus.OK);
+        }
+        return new ResponseEntity(HttpStatus.BAD_REQUEST);
     }
 
     @Override
     public ResponseEntity<Pessoa> buscarUsuarioESenha(String usuario, String senha) {
         Pessoa pessoa = pessoaRepository.findPessoaByUsuarioAndSenha(usuario, senha);
 
-        if (pessoa!=null){
-            return new ResponseEntity<>(pessoa,HttpStatus.OK);
+        if (pessoa != null) {
+            return new ResponseEntity<>(pessoa, HttpStatus.OK);
         }
         return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
     }
