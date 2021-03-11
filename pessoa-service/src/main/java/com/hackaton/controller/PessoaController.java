@@ -2,7 +2,6 @@ package com.hackaton.controller;
 
 import com.hackaton.entity.Pessoa;
 import com.hackaton.iservice.IPessoaService;
-import com.hackaton.model.ResponseModel;
 import com.hackaton.ws.request.SusApiRequest;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
@@ -50,8 +49,14 @@ public class PessoaController {
      * @param pessoa
      * @return
      */
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Cadastro Atualizado com Sucesso"),
+            @ApiResponse(code = 400, message = "Erro ao Atualizar"),
+            @ApiResponse(code = 403, message = "Você não tem permissão para acessar este recurso"),
+            @ApiResponse(code = 500, message = "Foi gerada uma exceção"),
+    })
     @PutMapping(value = "/pessoa")
-    public @ResponseBody ResponseModel atualizar( @Valid @RequestBody Pessoa pessoa) {
+    public @ResponseBody ResponseEntity atualizar(@Valid @RequestBody Pessoa pessoa) {
 
         return pessoaService.atualizar(pessoa);
     }

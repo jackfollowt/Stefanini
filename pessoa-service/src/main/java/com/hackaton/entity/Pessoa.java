@@ -25,27 +25,30 @@ public class Pessoa implements Serializable {
 	@Column(name="ds_nome")
 	private String nome;
 
+	@NotBlank(message = "{idade.not.blank}")
+	@NotNull(message = "{idade.not.null}")
 	@Column(name="ds_idade")
 	private String idade;
 
+	@NotBlank(message = "{dtInicio.not.blank}")
+	@NotNull(message = "{dtInicio.not.null}")
 	@Column(name="dt_incio")
 	private String dtInicio;
 
+	@NotBlank(message = "{dt_fim.not.blank}")
+	@NotNull(message = "{dt_fim.not.null}")
 	@Column(name="dt_fim")
 	private String dtFim;
-	@NotNull(message = "{name.not.null}")
-	@Column(name="fl_atuaTI", columnDefinition="BIT")
+
+	@NotBlank(message = "{atuacao.not.blank}")
+	@NotNull(message = "{atuacao.not.null}")
+	@Column(name="fl_atuaTI")
 	private String atuacao;
 
 	@NotBlank(message = "{telefone.not.blank}")
 	@NotNull(message = "{telefone.not.null}")
 	@Column(name = "num_telefone")
 	private String telefone;
-
-	@NotBlank(message = "{endereco.not.blank}")
-	@NotNull(message = "{endereco.not.null}")
-	@Column(name = "num_endereco")
-	private String endereco;
 
 	@NotBlank(message = "{email.not.blank}")
 	@NotNull(message = "{email.not.null}")
