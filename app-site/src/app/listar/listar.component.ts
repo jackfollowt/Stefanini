@@ -1,16 +1,16 @@
 ﻿import { Component, OnInit } from '@angular/core';
 import { first } from 'rxjs/operators';
-import {Chart} from 'chart.js';
 
 import { Pessoa } from '@/_models';
 import { PessoaService, AuthenticationService } from '@/_services';
-import {Hits} from '@/_models/hits';
+import {Router} from '@angular/router';
 
 @Component({ templateUrl: 'listar.component.html' })
 export class ListarComponent implements OnInit {
     currentPessoa: Pessoa;
     pessoas = [];
     constructor(
+        private router: Router,
         private authenticationService: AuthenticationService,
         private pessoaService: PessoaService
     ) {
@@ -23,7 +23,6 @@ export class ListarComponent implements OnInit {
     }
 
     deletePessoa(codigo: number) {
-        console.log('Codigo controller', codigo)
         this.pessoaService.delete(codigo)
             .pipe(first())
             .subscribe(() => this.loadAllPessoas());
@@ -34,4 +33,9 @@ export class ListarComponent implements OnInit {
             .pipe(first())
             .subscribe(pessoas => this.pessoas = pessoas);
     }
+
+
+    editPessoa(pessoas: Pessoa): void {
+        this.router.navigate(['/editar/'+pessoas.codigo]);
+    };
 }

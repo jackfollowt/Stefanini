@@ -95,7 +95,7 @@ export class HomeComponent implements OnInit {
                 },
                 options:{
                     title:{
-                        text: 'Tipos de Teste',
+                        text: 'Estado do Teste',
                         display: true
                     },
                 }

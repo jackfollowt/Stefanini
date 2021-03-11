@@ -91,7 +91,7 @@ public class PessoaController {
      * @return
      */
     @PostMapping(value = "/pessoa/login")
-    public @ResponseBody Pessoa buscar(@RequestBody Pessoa pessoa) {
+    public @ResponseBody Pessoa buscarUsuarioSenha(@RequestBody Pessoa pessoa) {
 
         return pessoaService.buscarUsuarioESenha(pessoa.getUsuario(), pessoa.getSenha());
     }

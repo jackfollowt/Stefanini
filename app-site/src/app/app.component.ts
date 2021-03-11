@@ -13,7 +13,6 @@ export class AppComponent {
     constructor(
         private router: Router,
         private authenticationService: AuthenticationService,
-        private pessoaService: PessoaService
     ) {
         this.authenticationService.currentPessoa.subscribe(x => this.currentPessoa = x);
     }
@@ -21,9 +20,5 @@ export class AppComponent {
     logout() {
         this.authenticationService.logout();
         this.router.navigate(['/login']);
-    }
-    editarUsuario() {
-        this.pessoaService.getAll();
-        this.router.navigate(['/listar']);
     }
 }
