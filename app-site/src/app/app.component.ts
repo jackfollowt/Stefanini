@@ -1,7 +1,7 @@
 ﻿import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { AuthenticationService } from './_services';
+import {AuthenticationService, PessoaService} from './_services';
 import { Pessoa } from './_models';
 
 import './_content/app.less';
@@ -12,7 +12,7 @@ export class AppComponent {
 
     constructor(
         private router: Router,
-        private authenticationService: AuthenticationService
+        private authenticationService: AuthenticationService,
     ) {
         this.authenticationService.currentPessoa.subscribe(x => this.currentPessoa = x);
     }

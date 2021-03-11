@@ -1,7 +1,12 @@
 ﻿<!-- nav -->
 <nav class="navbar navbar-expand navbar-dark bg-dark" *ngIf="currentPessoa">
+    <div  class="col-sm-2">
+        <img src="/src/assets/img/logo_stf2.png" alt="Logo Stefanini" style="width: 50px; margin-left: 72%">
+        <br>
+    </div>
     <div class="navbar-nav">
         <a class="nav-item nav-link" routerLink="/">Home</a>
+        <a class="nav-item nav-link" routerLink="/listar">Usuarios</a>
         <a class="nav-item nav-link" (click)="logout()">Logout</a>
     </div>
 </nav>
@@ -10,7 +15,7 @@
 <div class="jumbotron">
     <div class="container">
         <div class="row">
-            <div class="col-sm-6 offset-sm-3">
+            <div class="col-sm-12">
                 <alert></alert>
                 <router-outlet></router-outlet>
             </div>

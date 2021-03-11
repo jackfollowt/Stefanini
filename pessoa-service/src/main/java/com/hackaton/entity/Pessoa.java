@@ -25,9 +25,17 @@ public class Pessoa implements Serializable {
 	@Column(name="ds_nome")
 	private String nome;
 
+	@Column(name="ds_idade")
+	private String idade;
+
+	@Column(name="dt_incio")
+	private String dtInicio;
+
+	@Column(name="dt_fim")
+	private String dtFim;
 	@NotNull(message = "{name.not.null}")
-	@Column(name="fl_ativo", columnDefinition="BIT")
-	private boolean ativo;
+	@Column(name="fl_atuaTI", columnDefinition="BIT")
+	private String atuacao;
 
 	@NotBlank(message = "{telefone.not.blank}")
 	@NotNull(message = "{telefone.not.null}")

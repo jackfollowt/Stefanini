@@ -1,18 +1,22 @@
 ﻿import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router,ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
 
 import { AlertService, PessoaService, AuthenticationService } from '@/_services';
+import {Pessoa} from '@/_models';
 
 @Component({ templateUrl: 'register.component.html' })
 export class RegisterComponent implements OnInit {
+    mask:string;
+    pessoa: Pessoa;
     registerForm: FormGroup;
     loading = false;
     submitted = false;
 
     constructor(
         private formBuilder: FormBuilder,
+        private activatedRoute: ActivatedRoute,
         private router: Router,
         private authenticationService: AuthenticationService,
         private pessoaService: PessoaService,
@@ -28,6 +32,8 @@ export class RegisterComponent implements OnInit {
         this.registerForm = this.formBuilder.group({
             nome: ['', Validators.required],
             usuario: ['', Validators.required],
+            dtInicio: ['', Validators.required],
+            dtFim: ['', Validators.required],
             telefone: ['', [Validators.required, Validators.maxLength(9)]],
             idade: ['', Validators.required],
             email: ['', Validators.required],
@@ -51,12 +57,14 @@ export class RegisterComponent implements OnInit {
             return;
         }
 
+
         this.loading = true;
         this.pessoaService.register(this.registerForm.value)
             .pipe(first())
             .subscribe(
                 data => {
-                    this.alertService.success('Registration successful', true);
+                    alert("Ususario Registrado com sucesso");
+                    //this.alertService.success('Registration successful', true);
                     this.router.navigate(['/login']);
                 },
                 error => {

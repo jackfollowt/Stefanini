@@ -105,12 +105,11 @@ public class PessoaController {
 
     /**
      * BUSCAR UM USUARUIO PELO LOGIN
+<<<<<<< HEAD
      * @return
      */
     @PostMapping(value = "/pessoa/login")
     public @ResponseBody ResponseEntity<Pessoa> buscar(@RequestBody Pessoa pessoa) {
-
         return (ResponseEntity<Pessoa>) pessoaService.buscarUsuarioESenha(pessoa.getUsuario(), pessoa.getSenha());
     }
-
 }

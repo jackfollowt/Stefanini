@@ -1,6 +1,5 @@
 package com.hackaton.ws.request;
 
-import com.hackaton.ws.response.SusApiResponse;
 import org.apache.commons.codec.binary.Base64;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.context.annotation.Bean;
@@ -27,11 +26,14 @@ public class SusApiRequest implements Serializable {
     public String run() {
 
         RestTemplate restTemplate = new RestTemplate();
-        String url = "https://elasticsearch-saps.saude.gov.br/desc-notificacoes-esusve-*/_search?pretty";
+        String url = "https://elasticsearch-saps.saude.gov.br/desc-notificacoes-esusve-df/_search?pretty";
             ResponseEntity<String> susApiResponse =
-                    restTemplate.exchange(url, HttpMethod.GET, new HttpEntity<SusApiResponse>(createHeaders("user-public-notificacoes", "Za4qNXdyQNSa9YaA")), String.class);
+                    restTemplate.exchange(url, HttpMethod.GET,
+                            new HttpEntity<String>(
+                                    createHeaders("user-public-notificacoes",
+                                            "Za4qNXdyQNSa9YaA")), String.class);
 
-            return  susApiResponse.toString();
+            return  susApiResponse.getBody();
     }
 
     HttpHeaders createHeaders(String username, String password){
