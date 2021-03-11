@@ -5,6 +5,8 @@ import com.hackaton.iservice.IPessoaService;
 import com.hackaton.model.ResponseModel;
 import com.hackaton.repository.PessoaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -19,19 +21,13 @@ public class PessoaService implements IPessoaService {
 
 
     @Override
-    public ResponseModel salvar(Pessoa pessoa) {
+    public ResponseEntity<Pessoa> salvar(Pessoa pessoa) {
         Pessoa usuarioExiste =  pessoaRepository.findPessoaByUsuario(pessoa.getUsuario());
-
-            try {
-                if (usuarioExiste != null) {
+                if (usuarioExiste == null) {
                     this.pessoaRepository.save(pessoa);
-                    return new ResponseModel(1, "Registro salvo com sucesso!");
+                    return new ResponseEntity<>(pessoa, HttpStatus.OK);
                 }
-                return new ResponseModel(2, "Usuario já Cadastrado");
-            } catch (Exception e) {
-
-                return new ResponseModel(0, e.getMessage());
-            }
+                return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
     }
 
 
@@ -60,29 +56,26 @@ public class PessoaService implements IPessoaService {
     }
 
     @Override
-    public ResponseModel deletar(Integer codigo) {
+    public ResponseEntity deletar(Integer codigo) {
 
         boolean pessoaExiste = pessoaRepository.existsById(codigo);
-
-        try {
             if (pessoaExiste) {
                 Pessoa pessoa = pessoaRepository.findPessoaByCodigo(codigo);
 
                 pessoaRepository.delete(pessoa);
 
-                return new ResponseModel(1, "Registro excluido com sucesso!");
+                return new ResponseEntity(HttpStatus.OK);
             }
-            return new ResponseModel(3, "Registro Não Existe!");
-
-
-        }catch(Exception e) {
-            return new ResponseModel(0, e.getMessage());
-        }
+            return new ResponseEntity(HttpStatus.BAD_REQUEST);
     }
 
     @Override
-    public Pessoa buscarUsuarioESenha(String usuario, String senha) {
-        return pessoaRepository.findPessoaByUsuarioAndSenha(usuario, senha);
-    }
+    public ResponseEntity<Pessoa> buscarUsuarioESenha(String usuario, String senha) {
+        Pessoa pessoa = pessoaRepository.findPessoaByUsuarioAndSenha(usuario, senha);
 
+        if (pessoa!=null){
+            return new ResponseEntity<>(pessoa,HttpStatus.OK);
+        }
+        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+    }
 }

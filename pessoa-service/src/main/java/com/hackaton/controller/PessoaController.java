@@ -7,6 +7,7 @@ import com.hackaton.ws.request.SusApiRequest;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -32,12 +33,14 @@ public class PessoaController {
      * @return
      */
     @ApiResponses(value = {
-            @ApiResponse(code = 200, message = "Cadastra pessoas"),
+            @ApiResponse(code = 200, message = "Cadastro Realizado com Sucesso"),
+            @ApiResponse(code = 400, message = "Erro ao Cadastrar"),
             @ApiResponse(code = 403, message = "Você não tem permissão para acessar este recurso"),
             @ApiResponse(code = 500, message = "Foi gerada uma exceção"),
     })
     @PostMapping(value = "/pessoa")
-    public @ResponseBody ResponseModel salvar(@Valid @RequestBody Pessoa pessoa) {
+    public @ResponseBody
+    ResponseEntity<Pessoa> salvar(@Valid @RequestBody Pessoa pessoa) {
             return this.pessoaService.salvar(pessoa);
     }
 
@@ -48,7 +51,7 @@ public class PessoaController {
      * @return
      */
     @PutMapping(value = "/pessoa")
-    public @ResponseBody ResponseModel atualizar(@RequestBody Pessoa pessoa) {
+    public @ResponseBody ResponseModel atualizar( @Valid @RequestBody Pessoa pessoa) {
 
         return pessoaService.atualizar(pessoa);
     }
@@ -65,7 +68,7 @@ public class PessoaController {
     }
 
     @GetMapping(value = "/api")
-    public @ResponseBody String getApi() throws Exception {
+    public @ResponseBody String getApi() {
         return susApiRequest.run();
     }
 
@@ -86,23 +89,28 @@ public class PessoaController {
      * @param codigo
      * @return
      */
+
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Exclusão Realizado com Sucesso"),
+            @ApiResponse(code = 400, message = "Erro ao Excluir/Usuario Não Existe na Base de Dados"),
+            @ApiResponse(code = 403, message = "Você não tem permissão para acessar este recurso"),
+            @ApiResponse(code = 500, message = "Foi gerada uma exceção"),
+    })
     @DeleteMapping(value = "/pessoa/{codigo}")
-    public @ResponseBody ResponseModel excluir(@PathVariable("codigo") Integer codigo) {
+    public @ResponseBody
+    ResponseEntity excluir(@PathVariable("codigo") Integer codigo) {
 
         return pessoaService.deletar(codigo);
     }
 
     /**
      * BUSCAR UM USUARUIO PELO LOGIN
-     *
-     * @param usuario
-     * @param senha
      * @return
      */
     @PostMapping(value = "/pessoa/login")
-    public @ResponseBody Pessoa buscar(@RequestBody Pessoa pessoa) {
+    public @ResponseBody ResponseEntity<Pessoa> buscar(@RequestBody Pessoa pessoa) {
 
-        return pessoaService.buscarUsuarioESenha(pessoa.getUsuario(), pessoa.getSenha());
+        return (ResponseEntity<Pessoa>) pessoaService.buscarUsuarioESenha(pessoa.getUsuario(), pessoa.getSenha());
     }
 
 }
