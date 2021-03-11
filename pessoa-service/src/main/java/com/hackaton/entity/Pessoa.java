@@ -22,6 +22,12 @@ public class Pessoa implements Serializable {
 
 	@Column(name="ds_idade")
 	private String idade;
+
+	@Column(name="dt_incio")
+	private String dtInicio;
+
+	@Column(name="dt_fim")
+	private String dtFim;
 			
 	@Column(name="fl_atuaTI")
 	private String atuacao;
