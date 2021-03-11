@@ -20,29 +20,14 @@ public class PessoaService implements IPessoaService {
 
     @Override
     public ResponseModel salvar(Pessoa pessoa) {
-        boolean emailExiste =  emailCadastradoExiste(pessoa);
-
             try {
-                if (!emailExiste) {
                     this.pessoaRepository.save(pessoa);
                     return new ResponseModel(1, "Registro salvo com sucesso!");
-                }
-                return new ResponseModel(2, "Email já Cadastrado");
             } catch (Exception e) {
 
                 return new ResponseModel(0, e.getMessage());
             }
     }
-
-    private boolean emailCadastradoExiste(Pessoa pessoa) {
-        Pessoa pessoaExiste = pessoaRepository.findPessoaByEmail(pessoa.getEmail());
-        if (pessoaExiste !=null){
-            return true;
-         }else {
-            return false;
-        }
-    }
-
 
     @Override
     public ResponseModel atualizar(Pessoa pessoa) {
