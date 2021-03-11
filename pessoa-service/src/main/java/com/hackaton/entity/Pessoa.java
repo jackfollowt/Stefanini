@@ -33,8 +33,8 @@ public class Pessoa implements Serializable {
 
 	@Column(name="dt_fim")
 	private String dtFim;
-
-	@Column(name="fl_atuaTI")
+	@NotNull(message = "{name.not.null}")
+	@Column(name="fl_atuaTI", columnDefinition="BIT")
 	private String atuacao;
 
 	@NotBlank(message = "{telefone.not.blank}")
