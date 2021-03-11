@@ -2,6 +2,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { NgxMaskModule } from 'ngx-mask';
 
 import { appRoutingModule } from './app.routing';
 import { JwtInterceptor, ErrorInterceptor } from './_helpers';
@@ -18,6 +19,7 @@ import { AlertComponent } from './_components';
         ReactiveFormsModule,
         HttpClientModule,
         FormsModule,
+        NgxMaskModule.forRoot(),
         appRoutingModule,
     ],
     declarations: [

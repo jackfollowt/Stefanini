@@ -23,9 +23,13 @@ export class ListarComponent implements OnInit {
     }
 
     deletePessoa(codigo: number) {
-        this.pessoaService.delete(codigo)
-            .pipe(first())
-            .subscribe(() => this.loadAllPessoas());
+        if (confirm("Esta ação é irreversivel! \n Deseja continuar?")) {
+            this.pessoaService.delete(codigo)
+                .pipe(first())
+                .subscribe(() => this.loadAllPessoas());
+        } else {
+            this.router.navigate(['/listar']);
+        }
     }
 
     private loadAllPessoas() {
@@ -33,9 +37,4 @@ export class ListarComponent implements OnInit {
             .pipe(first())
             .subscribe(pessoas => this.pessoas = pessoas);
     }
-
-
-    editPessoa(pessoas: Pessoa): void {
-        this.router.navigate(['/editar/'+pessoas.codigo]);
-    };
 }

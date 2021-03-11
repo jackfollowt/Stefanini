@@ -9,6 +9,8 @@
             <th>Idade</th>
             <th>Sexo</th>
             <th>Atuou com TI</th>
+            <th>Periodo Inicio</th>
+            <th>Periodo Fim</th>
         </tr>
         </thead>
         <tbody>
@@ -19,6 +21,8 @@
             <td>{{pessoa.idade}}</td>
             <td>{{pessoa.sexo}}</td>
             <td>{{pessoa.atuacao}}</td>
+            <td>{{pessoa.dtInicio}}</td>
+            <td>{{pessoa.dtFim}}</td>
             <td></td>
             <td>
                 <button class="btn btn-success" (click)="deletePessoa(pessoa.codigo)"> Delete</button>

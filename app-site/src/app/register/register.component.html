@@ -13,15 +13,30 @@
         <div>
             <div class="form-group" id="inline">
                 <label for="idade">Idade *</label>
-                <input type="number" formControlName="idade" class="form-control"
+                <input type="text" formControlName="idade" class="form-control"
                        [ngClass]="{ 'is-invalid': submitted && f.idade.errors }"/>
                 <div *ngIf="submitted && f.idade.errors" class="invalid-feedback">
                     <div *ngIf="f.idade.errors.required">O campo idade é obrigatório</div>
                 </div>
             </div>
+
+            <div class="form-group">
+                <label for="dtInicio">Periodo de inicio *</label>
+                <input type="Date" formControlName="dtInicio" class="form-control"
+                       [ngClass]="{ 'is-invalid': submitted && f.dtInicio.errors }"/>
+                <div *ngIf="submitted && f.dtInicio.errors" class="invalid-feedback">
+                    <div *ngIf="f.dtInicio.errors.required">O campo idade é obrigatório</div>
+                </div>
+                <label for="dtInicio">Periodo de Finalização *</label>
+                <input type="Date" formControlName="dtFim" class="form-control"
+                       [ngClass]="{ 'is-invalid': submitted && f.dtFim.errors }"/>
+                <div *ngIf="submitted && f.dtFim.errors" class="invalid-feedback">
+                    <div *ngIf="f.dtFim.errors.required">O campo idade é obrigatório</div>
+                </div>
+            </div>
             <div class="form-group">
                 <label for="telefone">Telefone *</label>
-                <input type="number" formControlName="telefone" class="form-control"
+                <input type="text" formControlName="telefone" class="form-control"
                        [ngClass]="{ 'is-invalid': submitted && f.telefone.errors }"/>
                 <div *ngIf="submitted && f.telefone.errors" class="invalid-feedback">
                     <div *ngIf="f.telefone.errors.required">O Campo telefone é obrigatório</div>
@@ -42,9 +57,9 @@
             </div>
         </div>
 
-        <div class="form-group">
+        <div class="form-group" id="email">
             <label for="email">E-mail *</label>
-            <input type="text" formControlName="email" class="form-control"
+            <input type="text" formControlName="email" class="form-control" placeholder="exemplo@email.com"
                    [ngClass]="{ 'is-invalid': submitted && f.email.errors }"/>
             <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
                 <div *ngIf="f.email.errors.required">O campo email é obrigatório</div>
