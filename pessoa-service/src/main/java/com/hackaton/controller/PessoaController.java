@@ -4,9 +4,12 @@ import com.hackaton.entity.Pessoa;
 import com.hackaton.iservice.IPessoaService;
 import com.hackaton.model.ResponseModel;
 import com.hackaton.ws.request.SusApiRequest;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
 
@@ -28,10 +31,14 @@ public class PessoaController {
      * @param pessoa
      * @return
      */
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Cadastra pessoas"),
+            @ApiResponse(code = 403, message = "Você não tem permissão para acessar este recurso"),
+            @ApiResponse(code = 500, message = "Foi gerada uma exceção"),
+    })
     @PostMapping(value = "/pessoa")
-    public @ResponseBody ResponseModel salvar(@RequestBody Pessoa pessoa) {
-
-        return this.pessoaService.salvar(pessoa);
+    public @ResponseBody ResponseModel salvar(@Valid @RequestBody Pessoa pessoa) {
+            return this.pessoaService.salvar(pessoa);
     }
 
     /**

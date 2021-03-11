@@ -11,7 +11,7 @@ import java.util.List;
 @Transactional
 public interface PessoaRepository extends JpaRepository<Pessoa, Integer> {
 
-    Pessoa findPessoaByEmail(String email);
+    Pessoa findPessoaByUsuario(String usuario);
 
     Pessoa findPessoaByUsuarioAndSenha(String usuario, String senha);
 
