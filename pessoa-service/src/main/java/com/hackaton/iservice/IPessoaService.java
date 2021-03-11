@@ -2,7 +2,6 @@ package com.hackaton.iservice;
 
 
 import com.hackaton.entity.Pessoa;
-import com.hackaton.model.ResponseModel;
 import org.springframework.http.ResponseEntity;
 
 import java.util.List;
@@ -12,7 +11,7 @@ public interface IPessoaService {
 
     ResponseEntity<Pessoa> salvar(Pessoa pessoa);
 
-    ResponseModel atualizar(Pessoa pessoa);
+    ResponseEntity atualizar(Pessoa pessoa);
 
     List<Pessoa> consultar();
 

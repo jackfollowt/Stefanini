@@ -2,7 +2,6 @@ package com.hackaton.service;
 
 import com.hackaton.entity.Pessoa;
 import com.hackaton.iservice.IPessoaService;
-import com.hackaton.model.ResponseModel;
 import com.hackaton.repository.PessoaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -32,17 +31,13 @@ public class PessoaService implements IPessoaService {
 
 
     @Override
-    public ResponseModel atualizar(Pessoa pessoa) {
-        try {
-
+    public ResponseEntity atualizar(Pessoa pessoa) {
+        Pessoa usuarioExiste =  pessoaRepository.findPessoaByUsuario(pessoa.getUsuario());
+        if (usuarioExiste == null) {
             this.pessoaRepository.save(pessoa);
-
-            return new ResponseModel(1,"Registro atualizado com sucesso!");
-
-        }catch(Exception e) {
-
-            return new ResponseModel(0,e.getMessage());
+            return new ResponseEntity<>(pessoa, HttpStatus.OK);
         }
+        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
     }
 
     @Override
