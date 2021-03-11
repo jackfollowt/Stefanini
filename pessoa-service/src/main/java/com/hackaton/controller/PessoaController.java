@@ -105,7 +105,7 @@ public class PessoaController {
 
     /**
      * BUSCAR UM USUARUIO PELO LOGIN
-<<<<<<< HEAD
+
      * @return
      */
     @PostMapping(value = "/pessoa/login")
