@@ -7,6 +7,7 @@ import { AlertService, AuthenticationService } from '@/_services';
 
 @Component({ templateUrl: 'login.component.html' })
 export class LoginComponent implements OnInit {
+    urlLink: String = 'assets/img/logo_stf.png'
     loginForm: FormGroup;
     loading = false;
     submitted = false;
@@ -57,7 +58,8 @@ export class LoginComponent implements OnInit {
                     this.router.navigate([this.returnUrl]);
                 },
                 error => {
-                    this.alertService.error(error);
+                    // this.alertService.error(error);
+                    alert("Usuario nao existe")
                     this.loading = false;
                 });
     }

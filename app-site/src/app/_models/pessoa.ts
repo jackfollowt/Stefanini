@@ -1,10 +1,14 @@
 ﻿export class  Pessoa {
-    id: number;
+    codigo: number;
+    dtInicio: String;
+    dtFim: String;
     usuario: string;
     senha: string;
     nome: string;
-    telefone: number;
+    telefone: String;
     email: string;
-    idade: number;
+    idade: String;
+    sexo: any;
+    atuacao: boolean;
     token: string;
 }
