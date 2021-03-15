@@ -15,7 +15,7 @@ import java.util.Optional;
 
 @CrossOrigin(origins = "*")
 @RestController
-@RequestMapping("/service")
+@RequestMapping("/maratonaqa/api/service")
 public class PessoaController {
 
     @Autowired
