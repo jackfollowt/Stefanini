@@ -41,8 +41,7 @@ module.exports = {
         new webpack.DefinePlugin({
             // global app config object
             config: JSON.stringify({
-                apiUrl: '[11:20] Danilo Henrique Lima Dorgam\n' +
-                    'https://gitmaratonadev.stefanini.com.br/maratonaqa/api/service'
+                apiUrl:'https://gitmaratonadev.stefanini.com.br/maratonaqa/api/service'
             })
         }),
 
