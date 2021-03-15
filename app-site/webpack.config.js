@@ -17,6 +17,10 @@ module.exports = {
                 use: ['ts-loader', 'angular2-template-loader']
             },
             {
+                test: /\.(png|jpe?g|gif)$/i,
+                use: 'file-loader'
+            },
+            {
                 test: /\.html$/,
                 use: 'html-loader'
             },
