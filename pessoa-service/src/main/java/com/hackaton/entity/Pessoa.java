@@ -52,7 +52,6 @@ public class Pessoa implements Serializable {
 
 	@NotBlank(message = "{email.not.blank}")
 	@NotNull(message = "{email.not.null}")
-	@Email(message = "{email.not.valid}")
 	@Column(name = "end_email")
 	private String email;
 
