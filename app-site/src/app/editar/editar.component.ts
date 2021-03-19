@@ -68,7 +68,7 @@ export class EditarComponent implements OnInit {
                     this.router.navigate(['/listar']);
                 },
                 error => {
-                    this.alertService.error(error);
+                    this.alertService.error("Error");
                     this.loading = false;
                 });
     }
